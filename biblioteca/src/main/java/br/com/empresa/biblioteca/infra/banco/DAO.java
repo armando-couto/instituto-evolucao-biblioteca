@@ -45,12 +45,10 @@ public class DAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected List<? extends Entidade> consultarTodos(
-			Class<? extends Entidade> classe) {
+	protected List<? extends Entidade> consultarTodos(Class<? extends Entidade> classe) {
 		EntityManager gerente = fabrica.createEntityManager();
 		try {
-			Query consulta = gerente.createQuery("select a from "
-					+ classe.getSimpleName() + " a");
+			Query consulta = gerente.createQuery("select a from " + classe.getSimpleName() + " a");
 			return consulta.getResultList();
 		} finally {
 			gerente.close();

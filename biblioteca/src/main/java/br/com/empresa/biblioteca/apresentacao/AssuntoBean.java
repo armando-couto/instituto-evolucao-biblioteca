@@ -1,5 +1,6 @@
 package br.com.empresa.biblioteca.apresentacao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -10,11 +11,21 @@ import br.com.empresa.biblioteca.negocio.AssuntoService;
 
 @RequestScoped
 @ManagedBean(name = "assuntoBean")
-public class AssuntoBean {
+public class AssuntoBean implements Serializable {
 
-	private Assunto assunto = new Assunto();
-	private AssuntoService assuntoService = new AssuntoService();
+	/**
+	 * Serial UID.
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Assunto assunto;
+	private AssuntoService assuntoService;
 
+	public AssuntoBean() {
+		assunto = new Assunto();
+		assuntoService = new AssuntoService();
+	}
+	
 	public void incluir() {
 		try {
 			assuntoService.incluir(assunto);
