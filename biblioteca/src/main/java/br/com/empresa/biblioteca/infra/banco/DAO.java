@@ -1,5 +1,6 @@
 package br.com.empresa.biblioteca.infra.banco;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,11 +11,17 @@ import javax.persistence.Query;
 
 import br.com.empresa.biblioteca.comum.entidade.Entidade;
 
-public class DAO {
-	protected EntityManagerFactory fabrica;
+public class DAO implements Serializable {
+	
+	/**
+	 * Serial UID.
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	protected final EntityManagerFactory fabrica;
 
 	public DAO() {
-		fabrica = Persistence.createEntityManagerFactory("conexao1");
+		fabrica = Persistence.createEntityManagerFactory("conexao3");
 	}
 
 	public void incluir(Entidade entidade) {
